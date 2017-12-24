@@ -20,12 +20,12 @@ public class BlogDocumentTest {
 		blog.setId(4);
 		blog.setTitle("唱歌");
 		blog.setContent("大连真好看");
-		LuceneUtils.addIndex(blog);
+		//LuceneUtils.addIndex(blog);
 	}
 
 	@Test
 	public void test() {
-		LuceneUtils.searcherIndexByCondition("唱歌" , "大连");
+		LuceneUtils.searcherIndexByCondition("北京" , "大连");
 	}
 
 }

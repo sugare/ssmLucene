@@ -28,7 +28,6 @@ public class BlogContorller {
 
 		List<Blog> blogList = blogService.searchByCondition(title, content);
 
-		System.out.println("controller: "+blogList);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("blogList", blogList);
 		mav.setViewName("index");
@@ -51,4 +50,5 @@ public class BlogContorller {
 		blogService.insert(blog);
 		return "redirect:lists";
 	}
+	
 }

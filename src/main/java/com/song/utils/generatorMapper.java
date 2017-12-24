@@ -16,6 +16,11 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 * @description 说明：
 */
 public class generatorMapper {
+	/**
+	 * @name generator
+	 * @description 根据数据库中的表生成po
+	 * @throws Exception
+	 */
 	public void generator() throws Exception{
 
 		List<String> warnings = new ArrayList<String>();

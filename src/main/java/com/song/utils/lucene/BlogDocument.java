@@ -14,6 +14,13 @@ import com.song.po.Blog;
 * @description 说明：Blog2Document.java
 */
 public class BlogDocument {
+	
+	/**
+	 * @name Blog2Document
+	 * @description 将 Blog 对象转为 Document对象
+	 * @param Blog
+	 * @return Document
+	 */
 	public static Document Blog2Document(Blog blog) {
 		Document document = new Document();
 	
@@ -24,6 +31,12 @@ public class BlogDocument {
 		return document;
 	}
 	
+	/**
+	 * @name Document2Blog
+	 * @description 将 Document 对象转为 Blog对象
+	 * @param Document
+	 * @return Blog
+	 */
 	public static Blog Document2Blog(Document document) {
 		Blog blog = new Blog();
 		blog.setId(Integer.parseInt(document.get("id")));
