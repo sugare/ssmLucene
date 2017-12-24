@@ -16,4 +16,6 @@ public interface BlogService {
 	public int insert(Blog record);
 	
 	public List<Blog> searchByCondition(String title, String content);
+	
+	public List<Blog> selectAll();
 }

@@ -27,4 +27,7 @@ public interface BlogMapper {
     int updateByPrimaryKeySelective(Blog record);
 
     int updateByPrimaryKey(Blog record);
+    
+    // 查询所有数据
+    List<Blog> selectAll();
 }

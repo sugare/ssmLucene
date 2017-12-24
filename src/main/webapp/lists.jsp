@@ -19,7 +19,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-8" style="text-align:center">
   	<div style="box-shadow:0px 2px 5px;height:100px;padding: 40px 0 0 0">
-		<form class="form-inline" action="searchSubmit" method="post">
+		<form class="form-inline" action="${pageContext.request.contextPath }/insertSubmit" method="post">
 		  <div class="form-group">
 		    <label for="title">标题</label>
 		    <input type="text" name="title" class="form-control" id="title" placeholder="设计模式">
@@ -30,28 +30,28 @@
 		    <input type="text" name="content" class="form-control" id="content" placeholder="学习">
 		  </div>
 		  &nbsp;&nbsp;
-		  <button type="submit" class="btn btn-default">查  询</button>
+		  <button type="submit" class="btn btn-default">添加数据</button>
 		</form>
   	</div>
   	<div style="box-shadow:0px 2px 5px">
   	
 		
-		<table class="table table-striped">
+		<table class="table table-striped table-bordered">
 			<tr>
-				<td>序号</td>
-				<td>标题</td>
+				<td width="100px">序号</td>
+				<td width="250px">标题</td>
 				<td>内容</td>
 			</tr>
 
-			<c:if test="${blogList != null}">
-				<c:forEach items="${blogList }" var="blog" varStatus="b">
-					<tr>
-						<td>${b.index + 1}</td>
-						<td>${blog.title }</td>
-						<td>${blog.content }</td>
-					</tr>
-				</c:forEach>
-			</c:if>
+			
+			<c:forEach items="${blogs }" var="blog" varStatus="b">
+				<tr>
+					<td>${b.index + 1}</td>
+					<td>${blog.title }</td>
+					<td>${blog.content }</td>
+				</tr>
+			</c:forEach>
+		
 		</table>
 	
 		

@@ -19,38 +19,29 @@ import com.song.utils.lucene.LuceneUtils;
 */
 
 @Controller
-public class TestContorller {
+public class BlogContorller {
 	@Autowired
 	private BlogService blogService;
-	
-	@RequestMapping("/test")
-	public String test() {
-		System.out.println(blogService.selectByPrimaryKey(1));
-		return "success";
-	}
-
-	@RequestMapping("/search")
-	public String search() {
-		return "search";
-	}
-	
-	@RequestMapping("/searchSubmit")
-	public ModelAndView searchSubmit(String title, String content) {
-		//System.out.println("controller: " + title);
-		//System.out.println("controller: " + content);
 		
+	@RequestMapping("/search")
+	public ModelAndView search(String title, String content) {
+
 		List<Blog> blogList = blogService.searchByCondition(title, content);
 
 		System.out.println("controller: "+blogList);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("blogList", blogList);
-		mav.setViewName("searchSubmit");
+		mav.setViewName("index");
 		return mav;
 	}
-	
-	@RequestMapping("/insert")
-	public String insert() {
-		return "insert";
+
+	@RequestMapping("/lists")
+	public ModelAndView lists() {
+		ModelAndView mav = new ModelAndView();
+		List<Blog> blogs = blogService.selectAll();
+		mav.addObject("blogs", blogs);
+		mav.setViewName("lists");
+		return mav;
 	}
 	
 	@RequestMapping("/insertSubmit")
@@ -58,7 +49,6 @@ public class TestContorller {
 		System.out.println(blog.getTitle());
 		System.out.println(blog.getContent());
 		blogService.insert(blog);
-		return "redirect:search";
-		//return "insert";
+		return "redirect:lists";
 	}
 }

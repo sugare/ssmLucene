@@ -50,6 +50,12 @@ public class BlogServiceImpl implements BlogService {
 		LuceneUtils.addIndex(record);
 		return 0;
 	}
+
+	@Override
+	public List<Blog> selectAll() {
+
+		return blogMapper.selectAll();
+	}
 	
 	
 }
