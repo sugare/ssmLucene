@@ -16,6 +16,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.NumericRangeQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
@@ -81,12 +82,12 @@ public class LuceneUtils {
 			if(null != title) {
 				Term t1=new Term("title",title);
 				Query query1=new TermQuery(t1);
-				booleanQuery.add(query1,BooleanClause.Occur.MUST_NOT);
+				booleanQuery.add(query1,BooleanClause.Occur.MUST);
 			}
 			if(null != content) {
 				Term t2=new Term("content", content);
 				Query query2=new TermQuery(t2);
-				booleanQuery.add(query2,BooleanClause.Occur.SHOULD);
+				booleanQuery.add(query2,BooleanClause.Occur.MUST);
 			}
 			
 			
@@ -158,4 +159,22 @@ public class LuceneUtils {
 		return blogList;
 	}
 
+	/**
+	 * @name deleteIndex
+	 * @description 指定id删除缩印库中的数据
+	 * @param id
+	 */
+	public static void deleteIndex(Integer id) {
+		
+		Query numbericRangeQuery = NumericRangeQuery.newIntRange("id",id-1, id+1, false, false);
+		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Configuration.getAnalyzer());
+		
+		try {
+			IndexWriter indexWriter = new IndexWriter(Configuration.getDirectory(), indexWriterConfig);
+			indexWriter.deleteDocuments(numbericRangeQuery);
+			indexWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

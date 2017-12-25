@@ -56,6 +56,13 @@ public class BlogServiceImpl implements BlogService {
 
 		return blogMapper.selectAll();
 	}
+
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		blogMapper.deleteByPrimaryKey(id);
+		LuceneUtils.deleteIndex(id);
+		return 0;
+	}
 	
 	
 }

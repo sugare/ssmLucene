@@ -18,4 +18,6 @@ public interface BlogService {
 	public List<Blog> searchByCondition(String title, String content);
 	
 	public List<Blog> selectAll();
+	
+	public int deleteByPrimaryKey(Integer id);
 }

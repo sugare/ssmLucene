@@ -41,6 +41,7 @@
 				<td width="100px">序号</td>
 				<td width="250px">标题</td>
 				<td>内容</td>
+				<td>删除</td>
 			</tr>
 
 			
@@ -49,6 +50,7 @@
 					<td>${b.index + 1}</td>
 					<td>${blog.title }</td>
 					<td>${blog.content }</td>
+					<td><a href="${pageContext.request.contextPath }/delete/${blog.id }">删除</a></td>
 				</tr>
 			</c:forEach>
 		

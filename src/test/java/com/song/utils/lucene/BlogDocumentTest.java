@@ -28,4 +28,9 @@ public class BlogDocumentTest {
 		LuceneUtils.searcherIndexByCondition("北京" , "大连");
 	}
 
+	@Test
+	public void testDelete() {
+		LuceneUtils.deleteIndex(21);
+	}
+
 }

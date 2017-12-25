@@ -1,16 +1,15 @@
 package com.song.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.song.po.Blog;
 import com.song.service.BlogService;
-import com.song.utils.lucene.LuceneUtils;
 
 /** 
 * @author зїеп E-mail: Sugare
@@ -49,6 +48,13 @@ public class BlogContorller {
 		System.out.println(blog.getContent());
 		blogService.insert(blog);
 		return "redirect:lists";
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		System.out.println(id);
+		blogService.deleteByPrimaryKey(id);
+		return "redirect:/lists";
 	}
 	
 }
